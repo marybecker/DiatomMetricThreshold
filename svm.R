@@ -45,7 +45,8 @@ predsitesT<-predsitesT[,c(1:4,6:8)]
 colnames(predsitesT)[1]<-"pred"
 colnames(predsitesT)[3]<-"Station_Name"
 predsites<-rbind(predsites,predsitesT)
-predsites$ImpairT<-ifelse(predsites$pred=="high"&predsites$TPGrp=="high",1,0)
+predsites$TPMH<-ifelse(predsites$TP_MGL>=0.04,"high","low")
+predsites$ImpairT<-ifelse(predsites$pred=="high"&predsites$TPMH=="high",1,0)
 
 library(RODBC)
 
